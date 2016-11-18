@@ -1,0 +1,32 @@
+// In this section you declare where to find the dependencies of your project
+allprojects {
+    // Apply the java plugin to add support for Java
+    apply plugin: 'java'
+
+    version = '1.0.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        jcenter()
+        mavenCentral()
+    }
+}
+
+// set gradle default encoding to UTF-8
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// make sources jar
+task sourcesJar(type: Jar) {
+    version = version + '-sources'
+    from sourceSets.main.java
+    destinationDir = file('build/libs')
+}
+
+// make javadoc jar
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    version = version + '-javadoc'
+    from('build/docs/javadoc')
+    destinationDir = file('build/libs')
+}
