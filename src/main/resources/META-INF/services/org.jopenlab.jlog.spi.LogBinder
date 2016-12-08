@@ -1,0 +1,2 @@
+org.jopenlab.jlog.jdk14.spi.LogBinderImpl
+org.jopenlab.jlog.log4j.spi.LogBinderImpl
